@@ -16,7 +16,7 @@ const Blogs = () => {
   console.log(blogsCopy)
 
   return (
-    <section className=''>
+    <section className='mt-20'>
       {blogsCopy
         ? blogsCopy.map((blog: blogsType, idx: number) => {
             return <Blog blog={blog} key={idx} />

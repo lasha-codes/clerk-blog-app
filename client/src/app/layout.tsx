@@ -9,6 +9,7 @@ import axios from 'axios'
 axios.defaults.baseURL = 'http://localhost:4000'
 import Context from '@/context/AppContext'
 import { ClerkProvider } from '@clerk/nextjs'
+import { dark } from '@clerk/themes'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,7 +19,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      appearance={{
+        baseTheme: dark,
+      }}
+    >
       <Provider store={store}>
         <Context>
           <html lang='en'>

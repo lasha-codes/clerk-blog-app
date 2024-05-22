@@ -6,6 +6,7 @@ import blogRoute from './routes/blogs.js'
 const app = express()
 
 dotenv.config()
+app.use(express.json())
 app.use(cors())
 app.use('/blogs', blogRoute)
 

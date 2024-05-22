@@ -1,13 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
-
-interface blogsType {
-  id: number
-  title: string
-  description: string
-  image: string
-  author: string
-}
+import { blogsType } from '@/types'
 
 interface initialStateType {
   blogs: blogsType | []

@@ -50,10 +50,10 @@ const AddProductPage = () => {
 
   return (
     <main className='w-full min-h-[100vh] pb-8 bg-bgColor text-white'>
-      <form className='pt-32 px-10 flex flex-col gap-6 items-start mx-auto w-[800px]'>
+      <form className='pt-32 px-10 flex flex-col gap-6 items-start mx-auto w-[760px] max-md:w-[600px] max-sm:w-[400px]'>
         <h2 className='text-2xl font-medium mb-12'>Add your blog</h2>
         <div className='w-full flex flex-col items-start gap-8 mb-6'>
-          <div className='w-1/2 h-[300px] overflow-hidden border rounded-xl flex items-center justify-center'>
+          <div className='w-1/2 h-[300px] max-md:h-[260px] max-sm:h-[180px] overflow-hidden border rounded-xl flex items-center justify-center'>
             {finalImage ? (
               <img src={finalImage} className='w-full h-full object-cover' />
             ) : (
@@ -67,7 +67,7 @@ const AddProductPage = () => {
             }
             type='text'
             placeholder='Image address'
-            className='w-full bg-bgColor border border-white rounded py-2 px-5 placeholder:text-white'
+            className='w-full bg-bgColor border outline-none border-white rounded py-2 px-5 placeholder:text-white'
           />
           <button
             onClick={addImage}
@@ -109,7 +109,7 @@ const AddProductPage = () => {
         <div className='w-full'>
           <div className='flex flex-col items-start gap-2 w-full'>
             <h2 className='text-lg font-medium'>Select types</h2>
-            <div className='w-[710px] flex items-center gap-3 flex-wrap'>
+            <div className='max-w-full  flex items-center gap-3 flex-wrap'>
               {types.map((type: string, idx: number) => {
                 return (
                   <button
@@ -126,7 +126,7 @@ const AddProductPage = () => {
               })}
             </div>
           </div>
-          <div className='w-[710px] border-b mt-5 border-white py-5 flex items-center gap-4 flex-wrap'>
+          <div className='max-w-full border-b mt-5 border-white py-5 flex items-center gap-4 flex-wrap'>
             {selectedTypes.map((type: string, idx: number) => {
               return (
                 <button
@@ -140,6 +140,9 @@ const AddProductPage = () => {
             })}
           </div>
         </div>
+        <button className='w-full py-4 flex hover:opacity-80 transition-all duration-300 ease-out items-center justify-center bg-main rounded-xl'>
+          Create
+        </button>
       </form>
     </main>
   )

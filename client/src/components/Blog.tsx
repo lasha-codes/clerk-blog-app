@@ -4,7 +4,7 @@ import { format } from 'date-fns'
 const Blog = ({ blog }: { blog: blogsType }) => {
   return (
     <div className='relative w-fit'>
-      <div className='w-[330px] h-[370px] rounded-xl overflow-hidden border bg-bgColor border-white shadow-sm shadow-white'>
+      <div className='w-[330px] h-[370px] rounded-xl overflow-hidden border bg-white border-white shadow-sm shadow-white'>
         <div className='w-full flex flex-col items-start gap-5'>
           <div className='w-full h-[190px]'>
             <img
@@ -13,10 +13,10 @@ const Blog = ({ blog }: { blog: blogsType }) => {
               className='object-cover h-full w-full'
             />
           </div>
-          <div className='flex flex-col items-start w-full gap-3 px-5 text-white'>
+          <div className='flex flex-col items-start w-full gap-3 px-5 text-bgColor'>
             <h2 className='capitalize text-lg font-medium'>{blog.title}</h2>
             <p className='opacity-80 max-w-[90%]'>{blog.description}</p>
-            <span className='flex items-center gap-0.5'>
+            <span className='flex items-center gap-0.5 font-medium'>
               <span>@</span>
               {blog.author}
             </span>

@@ -5,11 +5,13 @@ import { blogsType } from '@/types'
 interface initialStateType {
   blogs: blogsType | []
   isLoading: boolean
+  user: any
 }
 
 const initialState: initialStateType = {
   blogs: [],
   isLoading: true,
+  user: null,
 }
 
 export const getBlogs = createAsyncThunk<any>('/blogs/getData', async () => {

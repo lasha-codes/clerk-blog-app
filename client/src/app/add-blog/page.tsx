@@ -1,15 +1,20 @@
 'use client'
 
 import { useDispatch } from 'react-redux'
+import { useUser } from '@clerk/nextjs'
 import { useState } from 'react'
+import axios from 'axios'
+import { revalidatePath } from 'next/cache'
 
 const AddProductPage = () => {
-  const dispatch = useDispatch()
+  const { user } = useUser()
   const [imageAddress, setImageAddress] = useState<string>('')
   const [title, setTitle] = useState<string>('')
   const [description, setDescription] = useState<string>('')
   const [finalImage, setFinalImage] = useState<string>('')
   const [selectedTypes, setSelectedTypes] = useState<string[]>([])
+
+  console.log(user?.fullName)
 
   const addImage = () => {
     if (imageAddress.length === 0) {
@@ -48,9 +53,29 @@ const AddProductPage = () => {
     'POLITICS',
   ]
 
+  const addBlog = async (e: React.FormEvent) => {
+    e.preventDefault()
+    try {
+      const response = await axios.post('/blogs/add-blog', {
+        title,
+        image: finalImage,
+        description,
+        author: user?.fullName,
+        types: selectedTypes,
+      })
+      console.log(response.data)
+      revalidatePath('/')
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
   return (
     <main className='w-full min-h-[100vh] pb-8 bg-bgColor text-white'>
-      <form className='pt-32 px-10 flex flex-col gap-6 items-start mx-auto w-[760px] max-md:w-[600px] max-sm:w-[400px]'>
+      <form
+        onSubmit={addBlog}
+        className='pt-32 px-10 flex flex-col gap-6 items-start mx-auto w-[760px] max-md:w-[600px] max-sm:w-[400px]'
+      >
         <h2 className='text-2xl font-medium mb-12'>Add your blog</h2>
         <div className='w-full flex flex-col items-start gap-8 mb-6'>
           <div className='w-1/2 h-[300px] max-md:h-[260px] max-sm:h-[180px] overflow-hidden border rounded-xl flex items-center justify-center'>

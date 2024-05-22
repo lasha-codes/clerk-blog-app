@@ -31,6 +31,14 @@ const AddProductPage = () => {
     setSelectedTypes(selectedTypesCopy)
   }
 
+  const checkIfSelected = (type: string) => {
+    if (selectedTypes.includes(type)) {
+      return true
+    } else {
+      return false
+    }
+  }
+
   const types = [
     'GLOBAL',
     'SPORTS',
@@ -41,7 +49,7 @@ const AddProductPage = () => {
   ]
 
   return (
-    <main className='w-full min-h-[100vh] py-12 bg-bgColor text-white'>
+    <main className='w-full min-h-[100vh] pb-8 bg-bgColor text-white'>
       <form className='pt-32 px-10 flex flex-col gap-6 items-start mx-auto w-[800px]'>
         <h2 className='text-2xl font-medium mb-12'>Add your blog</h2>
         <div className='w-full flex flex-col items-start gap-8 mb-6'>
@@ -108,7 +116,9 @@ const AddProductPage = () => {
                     onClick={() => toggleType(type)}
                     type='button'
                     key={idx}
-                    className='text-black bg-white rounded-full px-4 py-1'
+                    className={`text-black border border-white bg-white rounded-full px-4 py-1.5 transition-all duration-300 ease-linear ${
+                      checkIfSelected(type) && '!bg-bgColor !text-white'
+                    }`}
                   >
                     {type}
                   </button>
@@ -116,13 +126,13 @@ const AddProductPage = () => {
               })}
             </div>
           </div>
-          <div className='w-[710px] border-b border-white py-5 flex items-center gap-4 flex-wrap'>
+          <div className='w-[710px] border-b mt-5 border-white py-5 flex items-center gap-4 flex-wrap'>
             {selectedTypes.map((type: string, idx: number) => {
               return (
                 <button
                   type='button'
                   key={idx}
-                  className='bg-white text-black px-4 py-1 rounded-full'
+                  className='bg-white text-black px-4 py-1.5 rounded-full'
                 >
                   {type}
                 </button>

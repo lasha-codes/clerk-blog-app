@@ -8,7 +8,7 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: { main: '#452c63', bgColor: '#000001' },
+      colors: { main: '#E5195E', bgColor: '#000001' },
     },
   },
   plugins: [],

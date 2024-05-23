@@ -13,6 +13,7 @@ const Header = () => {
       <nav className='flex items-center gap-5'>
         {isLoaded && sessionId ? (
           <div className='flex items-center gap-3'>
+            <Link href='/profile'>Profile</Link>
             <Link href='/add-blog'>Add Blog</Link>
             <UserButton />
           </div>

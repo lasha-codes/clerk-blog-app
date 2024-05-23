@@ -74,7 +74,7 @@ const AddProductPage = () => {
       setImageAddress('')
       setFinalImage('')
       setSelectedTypes([])
-      window.location.reload('')
+      window.location.reload()
     } catch (err) {
       console.error(err)
     }

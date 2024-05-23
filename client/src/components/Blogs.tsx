@@ -16,7 +16,7 @@ const Blogs = () => {
   console.log(blogsCopy)
 
   return (
-    <section className='mt-20'>
+    <section className='mt-20 flex items-center gap-24 flex-wrap px-5 justify-center'>
       {blogsCopy
         ? blogsCopy.map((blog: blogsType, idx: number) => {
             return <Blog blog={blog} key={idx} />

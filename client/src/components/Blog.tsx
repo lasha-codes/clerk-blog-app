@@ -1,6 +1,22 @@
 import { blogsType } from '@/types'
 import { format } from 'date-fns'
 
+const truncateDescription = (desc: string) => {
+  if (desc.length > 80) {
+    return `${desc.slice(0, 80)}...`
+  } else {
+    return desc
+  }
+}
+
+const truncateTitle = (title: string) => {
+  if (title.length > 20) {
+    return title.slice(0, 20) + '...'
+  } else {
+    return title
+  }
+}
+
 const Blog = ({ blog }: { blog: blogsType }) => {
   return (
     <div className='relative w-fit'>
@@ -14,8 +30,12 @@ const Blog = ({ blog }: { blog: blogsType }) => {
             />
           </div>
           <div className='flex flex-col items-start w-full gap-3 px-5 text-bgColor'>
-            <h2 className='capitalize text-lg font-medium'>{blog.title}</h2>
-            <p className='opacity-80 max-w-[90%]'>{blog.description}</p>
+            <h2 className='capitalize text-lg font-medium'>
+              {truncateTitle(blog.title)}
+            </h2>
+            <p className='opacity-80 max-w-[90%]'>
+              {truncateDescription(blog.description)}
+            </p>
             <span className='flex items-center gap-0.5 font-medium'>
               <span>@</span>
               {blog.author}

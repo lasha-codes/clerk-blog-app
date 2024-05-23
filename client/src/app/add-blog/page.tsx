@@ -56,14 +56,25 @@ const AddProductPage = () => {
   const addBlog = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
-      const response = await axios.post('/blogs/add-blog', {
+      if (!title || !description) {
+        return alert('All of the fields are required')
+      }
+      if (!finalImage) {
+        return alert('Image is required')
+      }
+      await axios.post('/blogs/add-blog', {
         title,
         image: finalImage,
         description,
         author: user?.fullName,
       })
-      console.log(response.data)
-      revalidatePath('/')
+
+      setTitle('')
+      setDescription('')
+      setImageAddress('')
+      setFinalImage('')
+      setSelectedTypes([])
+      window.location.reload('')
     } catch (err) {
       console.error(err)
     }

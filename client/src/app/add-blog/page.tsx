@@ -61,7 +61,6 @@ const AddProductPage = () => {
         image: finalImage,
         description,
         author: user?.fullName,
-        types: selectedTypes,
       })
       console.log(response.data)
       revalidatePath('/')
